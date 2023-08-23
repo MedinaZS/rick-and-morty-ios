@@ -34,6 +34,10 @@ class ViewController: UIViewController {
         cleanTableSeparator()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
