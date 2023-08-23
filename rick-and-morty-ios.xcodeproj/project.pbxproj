@@ -23,6 +23,11 @@
 		A6F2A3D42A9690380086670A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A3D32A9690380086670A /* Location.swift */; };
 		A6F2A3D62A96903F0086670A /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A3D52A96903F0086670A /* Episode.swift */; };
 		A6F2A3D92A9690950086670A /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A3D82A9690950086670A /* TabViewController.swift */; };
+		A6F2A3DB2A96A4500086670A /* ChatacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A3DA2A96A4500086670A /* ChatacterViewController.swift */; };
+		A6F2A3DD2A96A5280086670A /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A3DC2A96A5280086670A /* Origin.swift */; };
+		A6F2A3DF2A96A5F70086670A /* SingleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A3DE2A96A5F70086670A /* SingleLocation.swift */; };
+		A6F2A3E12A96A6C80086670A /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A3E02A96A6C80086670A /* CharacterStatus.swift */; };
+		A6F2A3E32A96A6F60086670A /* CharacterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A3E22A96A6F60086670A /* CharacterGender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,11 @@
 		A6F2A3D32A9690380086670A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A6F2A3D52A96903F0086670A /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		A6F2A3D82A9690950086670A /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		A6F2A3DA2A96A4500086670A /* ChatacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatacterViewController.swift; sourceTree = "<group>"; };
+		A6F2A3DC2A96A5280086670A /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
+		A6F2A3DE2A96A5F70086670A /* SingleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLocation.swift; sourceTree = "<group>"; };
+		A6F2A3E02A96A6C80086670A /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
+		A6F2A3E22A96A6F60086670A /* CharacterGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGender.swift; sourceTree = "<group>"; };
 		F923B88AB087C606E9E9DD6B /* Pods-rick-and-morty-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rick-and-morty-ios.debug.xcconfig"; path = "Target Support Files/Pods-rick-and-morty-ios/Pods-rick-and-morty-ios.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +147,10 @@
 				A6F2A3D12A9690310086670A /* Character.swift */,
 				A6F2A3D32A9690380086670A /* Location.swift */,
 				A6F2A3D52A96903F0086670A /* Episode.swift */,
+				A6F2A3DC2A96A5280086670A /* Origin.swift */,
+				A6F2A3DE2A96A5F70086670A /* SingleLocation.swift */,
+				A6F2A3E02A96A6C80086670A /* CharacterStatus.swift */,
+				A6F2A3E22A96A6F60086670A /* CharacterGender.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -154,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				A6F2A3D82A9690950086670A /* TabViewController.swift */,
+				A6F2A3DA2A96A4500086670A /* ChatacterViewController.swift */,
 			);
 			path = " Core";
 			sourceTree = "<group>";
@@ -284,13 +299,18 @@
 			files = (
 				A60E7DD82A96364800DE28B2 /* ViewController.swift in Sources */,
 				A60E7DD42A96364800DE28B2 /* AppDelegate.swift in Sources */,
+				A6F2A3E32A96A6F60086670A /* CharacterGender.swift in Sources */,
+				A6F2A3DF2A96A5F70086670A /* SingleLocation.swift in Sources */,
 				A60E7DE92A96385200DE28B2 /* CustomTableViewCell.swift in Sources */,
 				A6F2A3D62A96903F0086670A /* Episode.swift in Sources */,
 				A60E7DF62A9651E700DE28B2 /* ApiCharactersResponse.swift in Sources */,
 				A6F2A3D42A9690380086670A /* Location.swift in Sources */,
+				A6F2A3DD2A96A5280086670A /* Origin.swift in Sources */,
+				A6F2A3DB2A96A4500086670A /* ChatacterViewController.swift in Sources */,
 				A6F2A3D92A9690950086670A /* TabViewController.swift in Sources */,
 				A60E7DD62A96364800DE28B2 /* SceneDelegate.swift in Sources */,
 				A6F2A3CC2A968D9B0086670A /* EndPoint.swift in Sources */,
+				A6F2A3E12A96A6C80086670A /* CharacterStatus.swift in Sources */,
 				A60E7DF02A96456700DE28B2 /* InfoResponse.swift in Sources */,
 				A6F2A3D22A9690310086670A /* Character.swift in Sources */,
 			);

@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         case episodes = "https://rickandmortyapi.com/api/episode"
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
