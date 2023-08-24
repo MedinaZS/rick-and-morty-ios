@@ -13,26 +13,31 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var responseCharacters : ApiCharactersResponse?
+    var responseCharacters : ApiGetAllCharactersResponse?
     
     
-    enum api : String {
-        case characters = "https://rickandmortyapi.com/api/character"
-        case locations = "https://rickandmortyapi.com/api/location"
-        case episodes = "https://rickandmortyapi.com/api/episode"
-    }
+    //    enum api : String {
+    //        case characters = "https://rickandmortyapi.com/api/character"
+    //        case locations = "https://rickandmortyapi.com/api/location"
+    //        case episodes = "https://rickandmortyapi.com/api/episode"
+    //    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchCharacters(url: nil)
+        fetchCharacters()
         
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: CustomTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         
         cleanTableSeparator()
+        
+        
+        let request = APIRequest(endpoint: .character)
+        
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -47,19 +52,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.responseCharacters?.all.count ?? 0
+        return self.responseCharacters?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //Obtener la informacion del array
-        let character = responseCharacters?.all[indexPath.section]
+        let character = responseCharacters?.results[indexPath.section]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
         
         cell.nameField.text = character?.name
-        cell.iconStatus.text = character?.status == "Alive" ? "🟢" : "⚪️"
-        cell.statusField.text = character?.status
+        cell.iconStatus.text = character?.status == .alive ? "🟢" : "⚪️"
+        cell.statusField.text = character?.status.rawValue
         cell.specieField.text = character?.species
         
         //Imagen del caracter
@@ -83,7 +88,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-   
+    
     
 }
 
@@ -96,34 +101,33 @@ extension ViewController {
 
 // MARK: - API Fetch
 extension ViewController {
-    func fetchCharacters(url : String?) {
+    func fetchCharacters() {
         
-        AF.request((url != nil) ? url! : api.characters.rawValue)
+        //Get the url
+        guard let urlRequest = APIRequest.listAllCharactersURL else {
+            print("Failed to get url for request")
+            return
+        }
+        
+        // Make the request with Alamofire
+        AF.request(urlRequest)
             .validate()
-            .responseDecodable(of: ApiCharactersResponse.self) {
+            .responseDecodable(of: ApiGetAllCharactersResponse.self) {
                 (response) in
                 
                 switch response.result {
-                case .success(let apiResponse):
+                case .success(let model):
                     
-                    //Si no se pasa ninguna url es el inicio
-                    if url == nil {
-                        self.responseCharacters = apiResponse
-                    }else{
-                        //Seguir agregando a la lista
-                        self.responseCharacters?.all.append(contentsOf: apiResponse.all)
-                    }
+                    print("Total : " + String(model.info.count))
+                    print("Page result count : " + String(model.results.count))
                     
+                    
+                    self.responseCharacters = model
                     // Actualizar la tabla cuando tengas los datos
                     self.tableView.reloadData()
                     
-                    //Volver a llamar a la funcion hasta que se obtengan todos los caracteres
-                    if apiResponse.info.nextPage != nil {
-                        self.fetchCharacters(url: apiResponse.info.nextPage)
-                    }
-                    
                 case .failure(let error):
-                    print("Error fetching charactes: \(error)")
+                    print("Error fetching characters: \(error)")
                 }
                 
             }
